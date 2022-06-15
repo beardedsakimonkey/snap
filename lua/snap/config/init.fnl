@@ -105,7 +105,7 @@
       _ (assert false "config.filter must be a string or function"))
     nil))
 
-(fn file [config]
+(fn file [_self config]
   "Returns a functon which runs `snap.run` for searching files with common file producers and common consumers.
 
   Supported producers:
@@ -234,7 +234,7 @@
 
   ;; Create a function to invoke snap
   (fn []
-    (let [hide_views (partial M.hide-views config)
+    (let [hide_views (partial hide-views config)
           reverse (or config.reverse false)
           layout  (or config.layout nil)
           mappings (or config.mappings nil)
@@ -260,7 +260,7 @@
     :ripgrep.vimgrep "Rg Vimgrep"
     _                "Custom Vimgrep"))
 
-(fn vimgrep [config]
+(fn vimgrep [_self config]
   "Returns a functon which runs `snap.run` for grepping files.
 
   Supported producers:

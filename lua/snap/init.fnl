@@ -19,11 +19,13 @@
 ;;                                                                            ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+(local M {})
+(tset package.loaded :snap M)
+
 (local tbl      (require :snap.common.tbl))
 (local register (require :snap.common.register))
 (local config   (require :snap.config))
 (local buffer   (require :snap.common.buffer))
-(local window   (require :snap.common.window))
 (local input    (require :snap.view.input))
 (local results  (require :snap.view.results))
 (local view     (require :snap.view.view))
@@ -31,8 +33,6 @@
 (local create   (require :snap.producer.create))
 
 (require-macros :macros)
-
-(local M {})
 
 ;; Exposes register as a main API
 (tset M :register register)
@@ -280,7 +280,7 @@
   (fn has-views []
     (and
       (> total-views 0)
-      (not (M.get-hide-views))))
+      (not (get-hide-views))))
 
   ;; Views need to be recreated when we hide/show
   (fn create-views []

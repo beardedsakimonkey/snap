@@ -122,7 +122,7 @@ local function get_initial_filter(config)
     return nil
   end
 end
-local function file(config)
+local function file(_self, config)
   assert((type(config) == "table"))
   if config.prompt then
     assert((type(config.prompt) == "string"), "file.prompt must be a string")
@@ -242,7 +242,7 @@ local function file(config)
     do
       local _36_ = config
       local function _37_(...)
-        return M["hide-views"](_36_, ...)
+        return hide_views(_36_, ...)
       end
       hide_views0 = _37_
     end
@@ -270,7 +270,7 @@ local function vimgrep_prompt_by_kind(kind)
     return nil
   end
 end
-local function vimgrep(config)
+local function vimgrep(_self, config)
   assert((type(config) == "table"))
   if config.prompt then
     assert((type(config.prompt) == "string"), "vimgrep.prompt must be a string")

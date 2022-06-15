@@ -3,6 +3,7 @@ local buffer = require("snap.common.buffer")
 local window = require("snap.common.window")
 local tbl = require("snap.common.tbl")
 local register = require("snap.common.register")
+local M = {}
 local function layout(config)
   local _let_1_ = config.layout()
   local width = _let_1_["width"]
@@ -60,4 +61,4 @@ M.create = function(config)
   vim.api.nvim_command("augroup END")
   return view
 end
-return M.create
+return M

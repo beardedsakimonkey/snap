@@ -1,15 +1,15 @@
+local M = {}
+package.loaded["snap"] = M
 local tbl = require("snap.common.tbl")
 local register = require("snap.common.register")
 local config = require("snap.config")
 local buffer = require("snap.common.buffer")
-local window = require("snap.common.window")
 local input = require("snap.view.input")
 local results = require("snap.view.results")
 local view = require("snap.view.view")
 local request = require("snap.producer.request")
 local create = require("snap.producer.create")
-local M = {}
-M["register"] = register
+do end (M)["register"] = register
 M["config"] = config
 M.map = function(key, run, opts)
   assert((type(key) == "string"), "map key argument must be a string")
@@ -249,7 +249,7 @@ M.run = function(config0)
     total_views = 0
   end
   local function has_views()
-    return ((total_views > 0) and not M["get-hide-views"]())
+    return ((total_views > 0) and not get_hide_views())
   end
   local function create_views()
     if has_views() then

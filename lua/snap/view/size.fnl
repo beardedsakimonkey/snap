@@ -8,3 +8,5 @@
 
 ;; Percentage size that views should take up
 (tset M :view-width 0.5)
+
+M

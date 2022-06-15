@@ -1,4 +1,7 @@
-(local snap (require :snap))
+(local snap (let [p package.loaded.snap]
+                (if (= :table (type p))
+                    p
+                    (require :snap))))
 
 (fn create-slow-api []
   "Creates an api for handling slow values"

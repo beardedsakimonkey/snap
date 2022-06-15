@@ -4,6 +4,8 @@
 (local tbl (require :snap.common.tbl))
 (local register (require :snap.common.register))
 
+(local M {})
+
 (fn layout [config]
   "Creates a view layout"
   (let [{: width : height : row : col} (config.layout)
@@ -55,3 +57,5 @@
     (vim.api.nvim_command "augroup END")
 
     view))
+
+M
