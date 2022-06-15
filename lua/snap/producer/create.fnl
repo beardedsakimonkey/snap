@@ -1,4 +1,3 @@
-;; FIXME: dep cycle
 (local snap (require :snap))
 
 (fn create-slow-api []

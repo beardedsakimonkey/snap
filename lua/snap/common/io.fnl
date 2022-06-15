@@ -6,20 +6,19 @@
   "Spawns a command and returns a command iterator"
   (var stdoutbuffer "")
   (var stderrbuffer "")
+  (var handle nil)
   (let [stdout (vim.loop.new_pipe false)
-        stderr (vim.loop.new_pipe false)
-        handle (vim.loop.spawn cmd {: args :stdio [stdin stdout stderr] : cwd}
-                               (fn [code signal]
-                                 (stdout:read_stop)
-                                 (stderr:read_stop)
-                                 (stdout:close)
-                                 (stderr:close)
-                                 (when stdin
-                                   (stdin:read_stop)
-                                   (stdin:close))
-                                 ;; FIXME
-                                 ;; (handle:close)
-                                 ))]
+        stderr (vim.loop.new_pipe false)]
+    (set handle (vim.loop.spawn cmd {: args :stdio [stdin stdout stderr] : cwd}
+                                (fn [code signal]
+                                  (stdout:read_stop)
+                                  (stderr:read_stop)
+                                  (stdout:close)
+                                  (stderr:close)
+                                  (when stdin
+                                    (stdin:read_stop)
+                                    (stdin:close))
+                                  (handle:close))))
     (stdout:read_start (fn [err data]
                          (assert (not err))
                          (when data

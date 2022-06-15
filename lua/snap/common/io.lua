@@ -3,9 +3,9 @@ local M = {}
 M.spawn = function(cmd, args, cwd, stdin)
   local stdoutbuffer = ""
   local stderrbuffer = ""
+  local handle = nil
   local stdout = vim.loop.new_pipe(false)
   local stderr = vim.loop.new_pipe(false)
-  local handle
   local function _1_(code, signal)
     stdout:read_stop()
     stderr:read_stop()
@@ -13,10 +13,10 @@ M.spawn = function(cmd, args, cwd, stdin)
     stderr:close()
     if stdin then
       stdin:read_stop()
-      return stdin:close()
+      stdin:close()
     else
-      return nil
     end
+    return handle:close()
   end
   handle = vim.loop.spawn(cmd, {args = args, stdio = {stdin, stdout, stderr}, cwd = cwd}, _1_)
   local function _3_(err, data)
