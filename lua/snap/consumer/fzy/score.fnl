@@ -1,5 +1,5 @@
 (let [snap (require :snap)
-      fzy (require :fzy)]
+      fzy (require :snap.vendor.fzy-lua-native.lua)]
   (fn [producer]
     "Scores the result set"
     (fn [request]

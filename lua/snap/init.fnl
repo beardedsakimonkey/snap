@@ -122,7 +122,7 @@
     :table (do
              (assertmetatable result M.meta_tbl "result has wrong metatable")
              result)
-    _ (assert false "result passed to snap.meta_result must be a string or meta result")))
+    _ (assert false (.. "result passed to snap.meta_result must be a string or meta result; got: " (type result)))))
 
 (fn M.with_meta [result field value]
   "Sets a meta field, e.g. score, positions"
@@ -436,7 +436,7 @@
     ;; Collects results progressively and renders early if possible
     (fn config.on-value [value]
       ;; Check the type
-      (asserttable value "Main producer yielded a non-yieldable value")
+      (asserttable value (string.format "Main producer yielded a non-yieldable value: %s" value))
       ;; Accumulate the results
       (when (> (length value) 0)
         (tbl.accumulate results value)

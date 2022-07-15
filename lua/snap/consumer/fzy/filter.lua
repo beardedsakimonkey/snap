@@ -1,5 +1,5 @@
 local snap = require("snap")
-local fzy = require("fzy")
+local fzy = require("snap.vendor.fzy-lua-native.lua")
 local function _1_(producer)
   local function filter(filter0, results)
     if (filter0 == "") then

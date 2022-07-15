@@ -127,7 +127,7 @@ M.meta_result = function(result)
     return result
   elseif true then
     local _ = _16_
-    return assert(false, "result passed to snap.meta_result must be a string or meta result")
+    return assert(false, ("result passed to snap.meta_result must be a string or meta result; got: " .. type(result)))
   else
     return nil
   end
@@ -469,7 +469,7 @@ M.run = function(config0)
       end
     end
     config1["on-value"] = function(value)
-      assert((type(value) == "table"), "Main producer yielded a non-yieldable value")
+      assert((type(value) == "table"), string.format("Main producer yielded a non-yieldable value: %s", value))
       if (#value > 0) then
         tbl.accumulate(results0, value)
         if not M.has_meta(tbl.first(results0), "score") then

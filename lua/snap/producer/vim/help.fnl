@@ -3,7 +3,7 @@
       read-file (snap.get :preview.read-file)]
   (fn []
     (local tags-set {})
-    (local tag-files (snap.sync (partial vim.fn.globpath vim.o.runtimepath "doc/tags" 1 1)))
+    (local tag-files (snap.sync #(vim.fn.globpath vim.o.runtimepath "doc/tags" 1 1)))
     (each [_ tag-file (ipairs tag-files)]
       (local tags [])
       (local contents (read-file tag-file))

@@ -1,5 +1,5 @@
 local snap = require("snap")
-local fzy = require("fzy")
+local fzy = require("snap.vendor.fzy-lua-native.lua")
 local function _1_(producer)
   local function _2_(request)
     for results in snap.consume(producer, request) do

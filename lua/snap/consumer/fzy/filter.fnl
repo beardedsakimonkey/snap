@@ -1,5 +1,5 @@
 (let [snap (require :snap)
-      fzy (require :fzy)]
+      fzy (require :snap.vendor.fzy-lua-native.lua)]
   (fn [producer]
     "Filters each result from the producer using request.filter"
     (fn filter [filter results]
