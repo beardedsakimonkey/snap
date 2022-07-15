@@ -1,3 +1,9 @@
+This is a fork of [snap](https://github.com/camspiers/snap) that does a few things differently:
+ - removes dependency on aniseed
+ - vendors in [fzy-lua-native](https://github.com/romgrk/fzy-lua-native)
+
+---
+
 # Snap
 
 A fast finder system for neovim >0.5.
